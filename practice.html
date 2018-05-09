@@ -6,8 +6,27 @@
   </head>
   <body>
     <p>Arre loco estoy aprendiendo JavaScript</p>
+    <div id="seccion" style="width:150px; height:60px; border:thin solid silver">
+      Sección de contenidos...
+    </div>
 
+    <script type="text/javascript">
+    function resalta(elEvento) {
+      var evento = elEvento || window.event;
+      switch(evento.type) {
+        case 'mouseover':
+          this.style.borderColor = 'black';
+          break;
+        case 'mouseout':
+          this.style.borderColor = 'silver';
+          break;
+      }
+    }
 
-    <script type="text/javascript" src="js/practice.js"></script>
+    window.onload = function() {
+      document.getElementById("seccion").onmouseover = resalta;
+      document.getElementById("seccion").onmouseout = resalta;
+    }
+    </script>
   </body>
 </html>

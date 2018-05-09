@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Practice</title>
+  </head>
+  <body>
+    <p>Arre loco estoy aprendiendo JavaScript</p>
+
+    <div id="infoMouse" style="width:150px; height:60px; border:thin solid silver" onchange="muestraInformacion()">
+    </div>
+
+    <div id="infoKey" style="width:150px; height:60px; border:thin solid silver" onchange="muestraInformacion()">
+    </div>
+
+    <script type="text/javascript">
+    document.onclick = showInfoMouse;
+
+    document.onkeypress = showInfoKey;
+      function showInfoMouse(elEvento) {
+        var evento = elEvento || window.event;
+        var navegadorX = evento.clientX;
+        var navegadorY = evento.clientY;
+        var ventanaX = evento.screenX;
+        var ventanaY = evento.screenY;
+        infoMouse.innerHTML = "Ratón <br> Página["+navegadorX+", "+navegadorY+"] <br> Pantalla["+ventanaX+", "+ventanaY+"]";
+      }
+
+      function showInfoKey(elEvento) {
+        var evento = elEvento || window.event;
+        var codigo = evento.charCode || evento.keyCode;
+
+        infoKey.innerHTML = "Teclado <br> Caracter["+String.fromCharCode(codigo)+"] <br> Código["+codigo+"]";
+      }
+
+
+    </script>
+  </body>
+</html>
