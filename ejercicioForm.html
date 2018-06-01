@@ -5,7 +5,8 @@
     <title>Exercise?</title>
   </head>
   <body>
-    <textarea id="texto" onkeypress="return limita();" onchange="return limita()"></textarea>
+    <div id="info">Máximo 10 caracteres</div>
+    <textarea id="texto" onkeypress="return limita();" onkeyup="actualizaInfo()"></textarea>
     <h1 id="rest"></h1>
 
     <script type="text/javascript" src="js/form17.js"></script>

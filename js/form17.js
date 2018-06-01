@@ -1,15 +1,36 @@
 function limita() {
-  var limite = 20;
+  var maximoCaracteres = 10;
   var elemento = document.getElementById("texto");
-  if(elemento.value.length >= limite ) {
+
+  // Obtener la tecla pulsada
+  var evento = window.event;
+  var codigoCaracter = evento.charCode || evento.keyCode;
+  // Permitir utilizar las teclas con flecha horizontal
+  if(codigoCaracter == 37 || codigoCaracter == 39) {
+    return true;
+  }
+
+  // Permitir borrar con la tecla Backspace y con la tecla Supr.
+  if(codigoCaracter == 8 || codigoCaracter == 46) {
+    return true;
+  }
+  else if(elemento.value.length >= maximoCaracteres ) {
     return false;
   }
   else {
-    var queda = (limite - 1) - elemento.value.length;
-    var mensaje = document.getElementById('rest');
-    mensaje.onchange = function(){
-      document.getElementById('rest').innerHTML = "Quedan "+queda+" caracter";
-    }
     return true;
+  }
+}
+
+function actualizaInfo() {
+  var maximoCaracteres = 10;
+  var elemento = document.getElementById("texto");
+  var info = document.getElementById("info");
+
+  if(elemento.value.length >= maximoCaracteres ) {
+    info.innerHTML = "Máximo "+maximoCaracteres+" caracteres";
+  }
+  else {
+    info.innerHTML = "Puedes escribir hasta "+(maximoCaracteres-elemento.value.length)+" caracteres adicionales";
   }
 }
